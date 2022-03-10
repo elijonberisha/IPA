@@ -14,6 +14,9 @@ public class Youtube {
     @Column(name = "tutorial_link")
     private String tutorialLink;
 
+    @OneToOne(mappedBy = "youtube")
+    private CUser user;
+
     public Youtube() {
     }
 
@@ -33,11 +36,20 @@ public class Youtube {
         this.tutorialLink = tutorialLink;
     }
 
+    public CUser getUser() {
+        return user;
+    }
+
+    public void setUser(CUser user) {
+        this.user = user;
+    }
+
     @Override
     public String toString() {
         return "Youtube{" +
                 "id=" + id +
                 ", tutorialLink='" + tutorialLink + '\'' +
+                ", user=" + user +
                 '}';
     }
 }

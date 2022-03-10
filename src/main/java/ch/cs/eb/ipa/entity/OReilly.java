@@ -14,6 +14,9 @@ public class OReilly {
     @Column(name = "book_link")
     private String bookLink;
 
+    @OneToOne(mappedBy = "oreilly")
+    private CUser user;
+
     public OReilly() {
     }
 
@@ -33,11 +36,20 @@ public class OReilly {
         this.bookLink = bookLink;
     }
 
+    public CUser getUser() {
+        return user;
+    }
+
+    public void setUser(CUser user) {
+        this.user = user;
+    }
+
     @Override
     public String toString() {
         return "OReilly{" +
                 "id=" + id +
                 ", bookLink='" + bookLink + '\'' +
+                ", user=" + user +
                 '}';
     }
 }

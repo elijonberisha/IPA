@@ -14,6 +14,9 @@ public class Degreed {
     @Column(name = "article_link")
     private String articleLink;
 
+    @OneToOne(mappedBy = "degreed")
+    private CUser user;
+
     public Degreed() {
     }
 
@@ -33,11 +36,20 @@ public class Degreed {
         this.articleLink = articleLink;
     }
 
+    public CUser getUser() {
+        return user;
+    }
+
+    public void setUser(CUser user) {
+        this.user = user;
+    }
+
     @Override
     public String toString() {
         return "Degreed{" +
                 "id=" + id +
                 ", articleLink='" + articleLink + '\'' +
+                ", user=" + user +
                 '}';
     }
 }

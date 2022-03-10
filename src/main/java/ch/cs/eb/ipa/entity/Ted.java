@@ -20,6 +20,9 @@ public class Ted {
     @Column(name = "talk3_link")
     private String talk3Link;
 
+    @OneToOne(mappedBy = "ted")
+    private CUser user;
+
     public Ted() {
     }
 
@@ -55,6 +58,14 @@ public class Ted {
         this.talk3Link = talk3Link;
     }
 
+    public CUser getUser() {
+        return user;
+    }
+
+    public void setUser(CUser user) {
+        this.user = user;
+    }
+
     @Override
     public String toString() {
         return "Ted{" +
@@ -62,6 +73,7 @@ public class Ted {
                 ", talk1Link='" + talk1Link + '\'' +
                 ", talk2Link='" + talk2Link + '\'' +
                 ", talk3Link='" + talk3Link + '\'' +
+                ", user=" + user +
                 '}';
     }
 }

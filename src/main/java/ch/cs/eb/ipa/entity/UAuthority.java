@@ -3,6 +3,7 @@ package ch.cs.eb.ipa.entity;
 import ch.cs.eb.ipa.model.UserAuthority;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @NamedQuery(name = "UAuthority.findAll", query = "SELECT u FROM UAuthority u")
@@ -16,6 +17,9 @@ public class UAuthority {
     @Column(name = "role")
     @Enumerated(EnumType.STRING)
     private UserAuthority role;
+
+    @OneToMany(targetEntity = CUser.class, mappedBy = "user_authority", fetch = FetchType.EAGER)
+    List<CUser> userAuthority;
 
     public UAuthority(UserAuthority role) {
         this.role = role;
@@ -40,11 +44,20 @@ public class UAuthority {
         this.role = role;
     }
 
+    public List<CUser> getUserAuthority() {
+        return userAuthority;
+    }
+
+    public void setUserAuthority(List<CUser> userAuthority) {
+        this.userAuthority = userAuthority;
+    }
+
     @Override
     public String toString() {
         return "UAuthority{" +
                 "id=" + id +
                 ", role=" + role +
+                ", userAuthority=" + userAuthority +
                 '}';
     }
 }

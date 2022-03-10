@@ -20,6 +20,9 @@ public class W3schools {
     @Column(name = "article3_link")
     private String article3Link;
 
+    @OneToOne(mappedBy = "w3schools")
+    private CUser user;
+
     public W3schools() {
     }
 
@@ -55,6 +58,14 @@ public class W3schools {
         this.article3Link = article3Link;
     }
 
+    public CUser getUser() {
+        return user;
+    }
+
+    public void setUser(CUser user) {
+        this.user = user;
+    }
+
     @Override
     public String toString() {
         return "W3schools{" +
@@ -62,6 +73,7 @@ public class W3schools {
                 ", article1Link='" + article1Link + '\'' +
                 ", article2Link='" + article2Link + '\'' +
                 ", article3Link='" + article3Link + '\'' +
+                ", user=" + user +
                 '}';
     }
 }

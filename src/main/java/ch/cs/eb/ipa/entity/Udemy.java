@@ -20,6 +20,9 @@ public class Udemy {
     @Column(name = "training3_link")
     private String training3Link;
 
+    @OneToOne(mappedBy = "udemy")
+    private CUser user;
+
     public Udemy() {
     }
 
@@ -55,6 +58,14 @@ public class Udemy {
         this.training3Link = training3Link;
     }
 
+    public CUser getUser() {
+        return user;
+    }
+
+    public void setUser(CUser user) {
+        this.user = user;
+    }
+
     @Override
     public String toString() {
         return "Udemy{" +
@@ -62,6 +73,7 @@ public class Udemy {
                 ", training1Link='" + training1Link + '\'' +
                 ", training2Link='" + training2Link + '\'' +
                 ", training3Link='" + training3Link + '\'' +
+                ", user=" + user +
                 '}';
     }
 }
