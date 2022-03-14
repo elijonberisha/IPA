@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>E-Learning Rec. | Login</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://resources.ctsapprentice.ch/css/main/bootstrap.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+    <link rel="icon" href="https://resources.ctsapprentice.ch/images/icon/cts.ico">
+</head>
+<body data-aos-easing="ease" data-aos-duration="400" data-aos-delay="0">
+    <div class="container">
+    <br>
+        <div class="container p-5 my-5">
+            <div class="row my-5">
+                <div class="col border-bottom border-primary">
+                    <h1>E-Learning Recommendations</h1>
+                </div>
+            </div>
+            <div class="row my-3">
+                <div class="col">
+                    <h2>Sign In</h2>
+                </div>
+            </div>
+
+            <div class="alert alert-dismissible alert-danger mt-2 mb-2" th:if="${param.error}">
+                <button type="button" class="close" data-dismiss="alert">×</button>
+                <p>Invalid username or password.</p>
+            </div>
+
+            <div class="alert alert-dismissible alert-danger mt-2 mb-2" th:if="${message ne null}">
+                <button type="button" class="close" data-dismiss="alert">×</button>
+                <p th:text="${message}"></p>
+            </div>
+
+            <div class="alert alert-dismissible alert-success mt-2 mb-2" th:if="${registration_success ne null}">
+                <button type="button" class="close" data-dismiss="alert">×</button>
+                <p th:text="${registration_success}"></p>
+            </div>
+
+            <form method="post" th:action="@{/login}">
+                <div class="row py-3">
+                    <div class="col-sm-12 col-md-6 col-lg-6 mb-4">
+                        <label>Cognizant ID</label>
+                        <input id="username" name="username" autofocus type="text" class="form-control" maxlength="6" minlength="6" placeholder="Enter CTS-ID"/>
+                    </div>
+
+                    <div class="col-sm-12 col-md-6 col-lg-6">
+                        <label>Password</label>
+                        <input id="password" name="password" type="password" class="form-control" placeholder="Enter Password" maxlength="56"/>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col text-left">
+                        <p>No Account yet? Sign Up <a href="register">here</a></p>
+                    </div>
+
+                    <div class="col text-right">
+                        <button type="submit" name="loginSubmission" id="submit" class="btn btn-outline-primary">Sign In</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
+</body>
+</html>
