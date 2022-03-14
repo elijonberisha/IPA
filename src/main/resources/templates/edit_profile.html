@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>E-Learning Rec. | Edit Profile</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://resources.ctsapprentice.ch/css/main/bootstrap.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+    <link rel="icon" href="https://resources.ctsapprentice.ch/images/icon/cts.ico">
+</head>
+<body data-aos="fade-up" data-aos-easing="ease" data-aos-duration="400" data-aos-delay="0" class="aos-init aos-animate">
+    <div class="container">
+        <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <a class="navbar-brand" href="#">E-Learning Recommendations</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="navbar-collapse collapse order-3 dual-collapse2">
+                <ul class="navbar-nav ml-auto">
+
+                    <li class="nav-item active dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Profile
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="#">View Profile</a>
+                            <a class="dropdown-item" href="#">Edit Profile</a>
+                            <a class="dropdown-item" download="E_LEARNING_REC_MANUAL.pdf" href="#">Help</a>
+                        </div>
+                    </li>
+
+                    <li class="nav-item active dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="adminNavbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Admin
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="#">User Management</a>
+                        </div>
+                    </li>
+
+                    <!--- CHANGE PASSWORD -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <i class="fas fa-asterisk" title="Change Password" data-toggle="tooltip" data-placement="bottom" data-original-title="Change Password"></i>
+                        </a>
+                    </li>
+
+                    <!--- LOGOUT -->
+                    <li class="nav-item">
+                        <form id="my_form" th:action="@{/logout}" method="post">
+                            <a class="nav-link" href="javascript:{}" onclick="document.getElementById('my_form').submit();">
+                                <i class="fas fa-sign-out-alt" title="Logout" data-toggle="tooltip" data-placement="bottom" data-original-title="Sign Out"></i>
+                            </a>
+                        </form>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <br>
+        <div class="container mt-5 p-5 my-5">
+            <div class="row my-3">
+                <div class="col border-bottom border-primary">
+                    <h1>E-Learning Recommendations</h1>
+                </div>
+            </div>
+            <div class="row my-3">
+                <div class="col">
+                    <h2>Edit Your Profile</h2>
+                </div>
+            </div>
+
+            <div class="alert alert-danger mt-2 mb-2">
+                <p>Error Message</p>
+            </div>
+
+            <div class="alert alert-success mt-2 mb-2">
+                <p>Your profile has been successfully edited!</p>
+            </div>
+
+            <form method="post">
+                <div class="row py-3">
+                    <div class="col-3">
+                        <label for="cts_id">Cognizant-ID:</label>
+                    </div>
+                    <div class="col-9">
+                        <input class="form-control" id="cts_id" placeholder="100000" type="text" disabled>
+                    </div>
+                </div>
+
+                <div class="row py-3">
+                    <div class="col-3">
+                        <label for="firstname">First Name:</label>
+                    </div>
+                    <div class="col-9">
+                        <input class="form-control" id="firstname" placeholder="First Name" type="text" disabled>
+                    </div>
+                </div>
+
+                <div class="row py-3">
+                    <div class="col-3">
+                        <label for="lastname">Last Name:</label>
+                    </div>
+                    <div class="col-9">
+                        <input class="form-control" id="lastname" placeholder="Last Name" type="text" disabled>
+                    </div>
+                </div>
+
+                <div class="row py-3">
+                    <div class="col-3">
+                        <label for="mail">Cognizant Mail:</label>
+                    </div>
+                    <div class="col-9">
+                        <input class="form-control" id="mail" placeholder="cognizant.mail@cognizant.com" type="email" disabled>
+                    </div>
+                </div>
+
+                <div class="row py-3">
+                    <div class="col-3">
+                        <label for="degreed">Favorite Degreed Article:</label>
+                    </div>
+                    <div class="col-9">
+                        <input class="form-control" id="degreed" placeholder="Degreed Link" type="text">
+                    </div>
+                </div>
+
+                <div class="row py-3">
+                    <div class="col-3">
+                        <label for="oreilly">Favorite 0'Reilly Book:</label>
+                    </div>
+                    <div class="col-9">
+                        <input class="form-control" id="oreilly" placeholder="O'Reilly Link" type="text">
+                    </div>
+                </div>
+
+                <div class="row py-3">
+                    <div class="col-3">
+                        <label for="youtube">Most Useful YouTube Tutorial:</label>
+                    </div>
+                    <div class="col-9">
+                        <input class="form-control" id="youtube" placeholder="YouTube Link" type="text">
+                    </div>
+                </div>
+
+                <div class="row py-3">
+                    <div class="col-lg-3 col-md-12 col-sm-12 mb-2">
+                        <label>Favorite TED-Talks:</label>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-12 mb-3">
+                        <input class="form-control" placeholder="TED Link" type="text">
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-12 mb-3">
+                        <input class="form-control" placeholder="TED Link" type="text">
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-12 mb-3">
+                        <input class="form-control" placeholder="TED Link" type="text">
+                    </div>
+                </div>
+
+                <div class="row py-3">
+                    <div class="col-lg-3 col-md-12 col-sm-12 mb-2">
+                        <label>Favorite W3Schools Articles:</label>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-12 mb-3">
+                        <input class="form-control" placeholder="W3Schools Link" type="text">
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-12 mb-3">
+                        <input class="form-control" placeholder="W3Schools Link" type="text">
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-12 mb-3">
+                        <input class="form-control" placeholder="W3Schools Link" type="text">
+                    </div>
+                </div>
+
+                <div class="row py-3">
+                    <div class="col-lg-3 col-md-12 col-sm-12 mb-2">
+                        <label>Favorite Udemy Trainings:</label>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-12 mb-3">
+                        <input class="form-control" placeholder="Udemy Link" type="text">
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-12 mb-3">
+                        <input class="form-control" placeholder="Udemy Link" type="text">
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-12 mb-3">
+                        <input class="form-control" placeholder="Udemy Link" type="text">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col text-right">
+                        <a href="home" class="btn btn-outline-danger mb-2">Cancel</a>
+                        <button type="submit" name="profileEditSubmission" id="submit" class="btn btn-outline-primary mb-2">Submit</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
+</body>
+</html>

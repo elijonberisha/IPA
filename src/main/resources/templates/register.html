@@ -11,87 +11,87 @@
     <link rel="icon" href="https://resources.ctsapprentice.ch/images/icon/cts.ico">
 </head>
 <body data-aos="fade-up" data-aos-easing="ease" data-aos-duration="400" data-aos-delay="0" class="aos-init aos-animate">
-<div class="container">
-    <br>
-    <div class="container p-5 my-5">
-        <div class="row my-5">
-            <div class="col border-bottom border-primary">
-                <h1>E-Learning Recommendations</h1>
+    <div class="container">
+        <br>
+        <div class="container mt-5 p-5 my-5">
+            <div class="row my-5">
+                <div class="col border-bottom border-primary">
+                    <h1>E-Learning Recommendations</h1>
+                </div>
             </div>
+            <div class="row my-3">
+                <div class="col">
+                    <h2>Sign Up</h2>
+                </div>
+            </div>
+
+            <div class="alert alert-dismissible alert-danger mt-2 mb-2" th:if="${message ne null}">
+                <button type="button" class="close" data-dismiss="alert">×</button>
+                <p th:text="${message}"></p>
+            </div>
+
+            <form method="post" th:action="@{/register}" th:object="${user}">
+                <div class="row py-3">
+                    <div class="col-sm-12 col-md-12 col-lg-12 mb-4">
+                        <label>Cognizant ID<span style="color:red;">*</span></label>
+                        <input class="form-control" type="text" th:field="*{cts_id}" required="" value="" minlength="6" maxlength="6" placeholder="Enter CTS-ID"/>
+                    </div>
+                </div>
+
+                <div class="row py-3">
+                    <div class="col-sm-12 col-md-6 col-lg-6 mb-4">
+                        <label>First Name<span style="color:red;"> *</span></label>
+                        <input class="form-control" type="text" th:field="*{prename}" placeholder="Enter First Name" required value=""/>
+                        <small id="firstnameHelp" class="form-text text-muted">
+                            Notice: Only Latin characters are valid
+                        </small>
+                    </div>
+
+                    <div class="col-sm-12 col-md-6 col-lg-6">
+                        <label>Last Name<span style="color:red;"> *</span></label>
+                        <input class="form-control" type="text" th:field="*{lastname}" placeholder="Enter Last Name" required value=""/>
+                        <small id="lastnameHelp" class="form-text text-muted">
+                            Notice: Only Latin characters are valid
+                        </small>
+                    </div>
+                </div>
+
+                <div class="row py-3">
+                    <div class="col-sm-12 col-md-12 col-lg-12 mb-4">
+                        <label>Cognizant Mail<span style="color:red;"> *</span></label>
+                        <input class="form-control" type="email" th:field="*{email}" required="" value="" placeholder="Enter CTS-Mail"/>
+                    </div>
+                </div>
+
+                <div class="row py-3">
+                    <div class="col-sm-12 col-md-12 col-lg-6 mb-4">
+                        <label>Password<span style="color:red;"> *</span></label>
+                        <input class="form-control" type="password" th:field="*{password}" required="" value="" placeholder="Enter Password"/>
+                    </div>
+                    <div class="col-sm-12 col-md-12 col-lg-6">
+                        <label>Repeat Password<span style="color:red;"> *</span></label>
+                        <input class="form-control" type="password" th:field="*{repeat_password}" required="" value="" placeholder="Repeat Password"/>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col text-left">
+                        <p>Already have an account? Sign In <a href="login">here</a></p>
+                    </div>
+
+                    <div class="col text-right">
+                        <button type="submit" name="registerSubmission" id="submit" class="btn btn-outline-primary">Sign Up</button>
+                    </div>
+                </div>
+            </form>
         </div>
-        <div class="row my-3">
-            <div class="col">
-                <h2>Sign Up</h2>
-            </div>
-        </div>
-
-        <div class="alert alert-dismissible alert-danger mt-2 mb-2" th:if="${message ne null}">
-            <button type="button" class="close" data-dismiss="alert">×</button>
-            <p th:text="${message}"></p>
-        </div>
-
-        <form method="post" th:action="@{/register}" th:object="${user}">
-            <div class="row py-3">
-                <div class="col-sm-12 col-md-12 col-lg-12 mb-4">
-                    <label>Cognizant ID<span style="color:red;">*</span></label>
-                    <input class="form-control" type="text" th:field="*{cts_id}" required="" value="" minlength="6" maxlength="6" placeholder="Enter CTS-ID"/>
-                </div>
-            </div>
-
-            <div class="row py-3">
-                <div class="col-sm-12 col-md-6 col-lg-6 mb-4">
-                    <label>First Name<span style="color:red;">*</span></label>
-                    <input class="form-control" type="text" th:field="*{prename}" placeholder="Enter First Name" required value=""/>
-                    <small id="firstnameHelp" class="form-text text-muted">
-                        Notice: Only Latin characters are valid
-                    </small>
-                </div>
-
-                <div class="col-sm-12 col-md-6 col-lg-6">
-                    <label>Last Name<span style="color:red;">*</span></label>
-                    <input class="form-control" type="text" th:field="*{lastname}" placeholder="Enter Last Name" required value=""/>
-                    <small id="lastnameHelp" class="form-text text-muted">
-                        Notice: Only Latin characters are valid
-                    </small>
-                </div>
-            </div>
-
-            <div class="row py-3">
-                <div class="col-sm-12 col-md-12 col-lg-12 mb-4">
-                    <label>Cognizant Mail<span style="color:red;">*</span></label>
-                    <input class="form-control" type="email" th:field="*{email}" required="" value="" placeholder="Enter CTS-Mail"/>
-                </div>
-            </div>
-
-            <div class="row py-3">
-                <div class="col-sm-12 col-md-12 col-lg-6 mb-4">
-                    <label>Password<span style="color:red;">*</span></label>
-                    <input class="form-control" type="password" th:field="*{password}" required="" value="" placeholder="Enter Password"/>
-                </div>
-                <div class="col-sm-12 col-md-12 col-lg-6">
-                    <label>Repeat Password<span style="color:red;">*</span></label>
-                    <input class="form-control" type="password" th:field="*{repeat_password}" required="" value="" placeholder="Repeat Password"/>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col text-left">
-                    <p>Already have an account? Sign In <a href="login">here</a></p>
-                </div>
-
-                <div class="col text-right">
-                    <button type="submit" name="registerSubmission" id="submit" class="btn btn-outline-primary">Sign Up</button>
-                </div>
-            </div>
-        </form>
     </div>
-</div>
 
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
-<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-<script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
         AOS.init();
     </script>
 </body>
