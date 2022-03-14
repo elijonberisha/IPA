@@ -44,10 +44,19 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http.authorizeRequests()
                 .antMatchers("/login").permitAll()
                 .antMatchers("/register").permitAll()
+                .antMatchers("/change_password_admin").hasAnyAuthority(ADMIN)
+                .antMatchers("/user_management").hasAnyAuthority(ADMIN)
+                .antMatchers("/actuator").hasAnyAuthority(ADMIN)
+                .antMatchers("/home").hasAnyAuthority(ADMIN, EMPLOYEE)
+                .antMatchers("/view_profile").hasAnyAuthority(ADMIN, EMPLOYEE)
+                .antMatchers("/edit_profile").hasAnyAuthority(ADMIN, EMPLOYEE)
+                .antMatchers("/change_password").hasAnyAuthority(ADMIN, EMPLOYEE)
                 .antMatchers("/logout").hasAnyAuthority(ADMIN, EMPLOYEE, INACTIVE)
                 .anyRequest().authenticated()
                 .and().formLogin().loginPage("/login").defaultSuccessUrl("/home").permitAll()
-                .and().logout().logoutUrl("/logout").logoutSuccessUrl("/login").invalidateHttpSession(true);
+                .and().logout().logoutUrl("/logout").logoutSuccessUrl("/login").invalidateHttpSession(true)
+                .and().httpBasic()
+                .and().exceptionHandling().accessDeniedPage("/403");
 
         http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.NEVER);
         http.sessionManagement().maximumSessions(1).expiredUrl("/expired").and().invalidSessionUrl("/expired");
