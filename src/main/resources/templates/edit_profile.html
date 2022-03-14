@@ -59,6 +59,144 @@
                 </ul>
             </div>
         </nav>
+        <br>
+        <div class="container p-5 my-5">
+            <div class="row my-3">
+                <div class="col border-bottom border-primary">
+                    <h1>E-Learning Recommendations</h1>
+                </div>
+            </div>
+            <div class="row my-3">
+                <div class="col">
+                    <h2>Edit Your Profile</h2>
+                </div>
+            </div>
+
+            <div class="alert alert-danger mt-2 mb-2">
+                <p>Error Message</p>
+            </div>
+
+            <div class="alert alert-success mt-2 mb-2">
+                <p>Your profile has been successfully edited!</p>
+            </div>
+
+            <form method="post">
+                <div class="row py-3">
+                    <div class="col-3">
+                        <label for="cts_id">Cognizant-ID:</label>
+                    </div>
+                    <div class="col-9">
+                        <input class="form-control" id="cts_id" placeholder="100000" type="text" disabled>
+                    </div>
+                </div>
+
+                <div class="row py-3">
+                    <div class="col-3">
+                        <label for="firstname">First Name:</label>
+                    </div>
+                    <div class="col-9">
+                        <input class="form-control" id="firstname" placeholder="First Name" type="text" disabled>
+                    </div>
+                </div>
+
+                <div class="row py-3">
+                    <div class="col-3">
+                        <label for="lastname">Last Name:</label>
+                    </div>
+                    <div class="col-9">
+                        <input class="form-control" id="lastname" placeholder="Last Name" type="text" disabled>
+                    </div>
+                </div>
+
+                <div class="row py-3">
+                    <div class="col-3">
+                        <label for="mail">Cognizant Mail:</label>
+                    </div>
+                    <div class="col-9">
+                        <input class="form-control" id="mail" placeholder="cognizant.mail@cognizant.com" type="email" disabled>
+                    </div>
+                </div>
+
+                <div class="row py-3">
+                    <div class="col-3">
+                        <label for="degreed">Favorite Degreed Article:</label>
+                    </div>
+                    <div class="col-9">
+                        <input class="form-control" id="degreed" placeholder="Degreed Link" type="text">
+                    </div>
+                </div>
+
+                <div class="row py-3">
+                    <div class="col-3">
+                        <label for="oreilly">Favorite 0'Reilly Book:</label>
+                    </div>
+                    <div class="col-9">
+                        <input class="form-control" id="oreilly" placeholder="O'Reilly Link" type="text">
+                    </div>
+                </div>
+
+                <div class="row py-3">
+                    <div class="col-3">
+                        <label for="youtube">Most Useful YouTube Tutorial:</label>
+                    </div>
+                    <div class="col-9">
+                        <input class="form-control" id="youtube" placeholder="YouTube Link" type="text">
+                    </div>
+                </div>
+
+                <div class="row py-3">
+                    <div class="col-lg-3 col-md-12 col-sm-12 mb-2">
+                        <label>Favorite TED-Talks:</label>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-12 mb-3">
+                        <input class="form-control" placeholder="TED Link" type="text">
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-12 mb-3">
+                        <input class="form-control" placeholder="TED Link" type="text">
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-12 mb-3">
+                        <input class="form-control" placeholder="TED Link" type="text">
+                    </div>
+                </div>
+
+                <div class="row py-3">
+                    <div class="col-lg-3 col-md-12 col-sm-12 mb-2">
+                        <label>Favorite W3Schools Articles:</label>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-12 mb-3">
+                        <input class="form-control" placeholder="W3Schools Link" type="text">
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-12 mb-3">
+                        <input class="form-control" placeholder="W3Schools Link" type="text">
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-12 mb-3">
+                        <input class="form-control" placeholder="W3Schools Link" type="text">
+                    </div>
+                </div>
+
+                <div class="row py-3">
+                    <div class="col-lg-3 col-md-12 col-sm-12 mb-2">
+                        <label>Favorite Udemy Trainings:</label>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-12 mb-3">
+                        <input class="form-control" placeholder="Udemy Link" type="text">
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-12 mb-3">
+                        <input class="form-control" placeholder="Udemy Link" type="text">
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-12 mb-3">
+                        <input class="form-control" placeholder="Udemy Link" type="text">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col text-right">
+                        <a href="home" class="btn btn-outline-danger mb-2">Cancel</a>
+                        <button type="submit" name="profileEditSubmission" id="submit" class="btn btn-outline-primary mb-2">Submit</button>
+                    </div>
+                </div>
+            </form>
+        </div>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
