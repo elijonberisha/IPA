@@ -92,7 +92,7 @@
                 </div>
             </form>
 
-            <table class="table table-hover mt-4" th:if="${searchResults ne null}">
+            <table class="table table-hover mt-4" th:if="${searchResults!=null and !searchResults.empty}">
                 <thead class="thead-light">
                     <tr>
                         <th scope="col"> CTS-ID </th>
@@ -106,7 +106,7 @@
                         <td scope="row"><span th:text="${r.cts_id}"> CTS-ID </span></td>
                         <td><span th:text="${r.prename}"> First Name </span></td>
                         <td><span th:text="${r.lastname}"> Last Name </span></td>
-                        <td><a th:href="@{'/view_profile/' + ${r.cts_id}}">View</a></td>
+                        <td><a th:href="@{'/view_profile/' + ${r.cts_id}}" class="btn btn-outline-primary btn-sm">View</a></td>
                     </tr>
                 </tbody>
             </table>
@@ -115,8 +115,7 @@
                 <h2>People You May Know</h2>
             </div>
 
-            <div class="alert alert-danger alert-dismissible mt-4 mb-3" th:if="${message ne null}">
-                <button type="button" class="close" data-dismiss="alert">×</button>
+            <div class="alert alert-danger mb-3" th:if="${message ne null}">
                 <p th:text="${message}"></p>
             </div>
 
@@ -134,7 +133,7 @@
                     <td scope="row"><span th:text="${c.cts_id}"> CTS-ID </span></td>
                     <td><span th:text="${c.prename}"> First Name </span></td>
                     <td><span th:text="${c.lastname}"> Last Name </span></td>
-                    <td><a th:href="@{'/view_profile/' + ${c.cts_id}}">View</a></td>
+                    <td><a th:href="@{'/view_profile/' + ${c.cts_id}}" class="btn btn-outline-primary btn-sm">View</a></td>
                 </tr>
                 </tbody>
             </table>

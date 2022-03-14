@@ -26,24 +26,24 @@
                             Profile
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#">View Profile</a>
-                            <a class="dropdown-item" href="#">Edit Profile</a>
-                            <a class="dropdown-item" download="E_LEARNING_REC_MANUAL.pdf" href="#">Help</a>
+                            <a class="dropdown-item" th:href="@{'/view_profile/' + ${self.cts_id}}">View Profile</a>
+                            <a class="dropdown-item" href="edit_profile">Edit Profile</a>
+                            <a class="dropdown-item" download="E_LEARNING_REC_MANUAL.pdf" th:href="@{/download_manual}">Help</a>
                         </div>
                     </li>
 
-                    <li class="nav-item active dropdown">
+                    <li class="nav-item active dropdown" th:if="${admin ne null}">
                         <a class="nav-link dropdown-toggle" href="#" id="adminNavbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Admin
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#">User Management</a>
+                            <a class="dropdown-item" href="user_management">User Management</a>
                         </div>
                     </li>
 
                     <!--- CHANGE PASSWORD -->
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" href="change_password">
                             <i class="fas fa-asterisk" title="Change Password" data-toggle="tooltip" data-placement="bottom" data-original-title="Change Password"></i>
                         </a>
                     </li>
@@ -72,15 +72,21 @@
                 </div>
             </div>
 
-            <div class="alert alert-danger mt-4 mb-3">
-                <p>No Results</p>
+            <div class="alert alert-success alert-dismissible mt-4 mb-3" th:if="${activation ne null}">
+                <button type="button" class="close" data-dismiss="alert">×</button>
+                <p th:text="${activation}"></p>
             </div>
 
-            <form method="post">
+            <div class="alert alert-danger alert-dismissible mt-4 mb-3" th:if="${result ne null}">
+                <button type="button" class="close" data-dismiss="alert">×</button>
+                <p th:text="${result}"></p>
+            </div>
+
+            <form method="post" th:action="@{search_user_admin}" th:object="${criteria}">
                 <div class="row py-3">
                     <div class="col">
                         <label>Search User</label>
-                        <input autofocus type="text" class="form-control" placeholder="Enter Search Term"/>
+                        <input th:field="*{searchTerm}" autofocus type="text" class="form-control" placeholder="Enter Search Term"/>
                     </div>
                 </div>
                 <div class="row">
@@ -90,7 +96,7 @@
                 </div>
             </form>
 
-            <table class="table table-hover mt-4">
+            <table class="table table-hover mt-4" th:if="${searchResults!=null and !searchResults.empty}">
                 <thead class="thead-light">
                 <tr>
                     <th scope="col"> CTS-ID </th>
@@ -100,12 +106,12 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <td scope="row"> CTS- ID </td>
-                    <td> First Name </td>
-                    <td> Last Name </td>
-                    <td> Activate </td>
-                    <td> Change PWD </td>
+                <tr th:each="r : ${searchResults}">
+                    <td scope="row"><span th:text="${r.cts_id}"> CTS-ID </span></td>
+                    <td><span th:text="${r.prename}"> First Name </span></td>
+                    <td><span th:text="${r.lastname}"> Last Name </span></td>
+                    <td><a th:href="@{'/activate_profile/' + ${r.cts_id}}" class="btn btn-outline-primary btn-sm">Activate</a></td>
+                    <td><a th:href="@{'/change_password_admin/' + ${r.cts_id}}" class="btn btn-outline-primary btn-sm">Change PWD</a></td>
                 </tr>
                 </tbody>
             </table>
@@ -114,11 +120,11 @@
                 <h2>Inactive Users</h2>
             </div>
 
-            <div class="alert alert-danger mt-4 mb-3">
-                <p>There are no inactive users.</p>
+            <div class="alert alert-danger mt-4 mb-3" th:if="${message ne null}">
+                <p th:text="${message}"></p>
             </div>
 
-            <table class="table table-hover mt-4">
+            <table class="table table-hover mt-4" th:if="${users!=null and !users.empty}">
                 <thead class="thead-light">
                 <tr>
                     <th scope="col"> CTS-ID </th>
@@ -128,12 +134,12 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <td scope="row"> CTS- ID </td>
-                    <td> First Name </td>
-                    <td> Last Name </td>
-                    <td> Activate </td>
-                    <td> Change PWD </td>
+                <tr th:each="c : ${users}">
+                    <td scope="row"><span th:text="${c.cts_id}"> CTS-ID </span></td>
+                    <td><span th:text="${c.prename}"> First Name </span></td>
+                    <td><span th:text="${c.lastname}"> Last Name </span></td>
+                    <td><a th:href="@{'/activate_profile/' + ${c.cts_id}}" class="btn btn-outline-primary btn-sm">Activate</a></td>
+                    <td><a th:href="@{'/change_password_admin/' + ${c.cts_id}}" class="btn btn-outline-primary btn-sm">Change PWD</a></td>
                 </tr>
                 </tbody>
             </table>
