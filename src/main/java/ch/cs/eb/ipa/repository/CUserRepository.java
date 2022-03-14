@@ -1,7 +1,11 @@
 package ch.cs.eb.ipa.repository;
 
+import ch.cs.eb.ipa.config.CUserToUserDetailsMapper;
 import ch.cs.eb.ipa.entity.CUser;
 import ch.cs.eb.ipa.model.UserAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -13,7 +17,7 @@ import java.util.List;
 
 @Service
 @Transactional
-public class CUserRepository {
+public class CUserRepository implements UserDetailsService {
     EntityManagerFactory emFactory;
     EntityManager emanager;
 
@@ -145,5 +149,11 @@ public class CUserRepository {
 
     public void clearCache() {
         emanager.clear();
+    }
+
+    @Override
+    public UserDetails loadUserByUsername(String ctsId) throws UsernameNotFoundException {
+        CUser user = getByCtsId(Integer.parseInt(ctsId));
+        return CUserToUserDetailsMapper.toUserDetails(user);
     }
 }
