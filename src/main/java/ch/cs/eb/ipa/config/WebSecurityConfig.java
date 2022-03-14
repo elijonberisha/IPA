@@ -1,5 +1,6 @@
 package ch.cs.eb.ipa.config;
 
+import ch.cs.eb.ipa.model.UserAuthority;
 import ch.cs.eb.ipa.repository.CUserRepository;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -17,9 +18,9 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @EnableGlobalMethodSecurity(securedEnabled = true)
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
-    private static final String ADMIN = "ADMIN";
-    private static final String EMPLOYEE = "EMPLOYEE";
-    private static final String INACTIVE = "INACTIVE";
+    private static final String ADMIN = UserAuthority.ADMIN.name();
+    private static final String EMPLOYEE = UserAuthority.EMPLOYEE.name();
+    private static final String INACTIVE = UserAuthority.INACTIVE.name();
 
     @Bean
     public PasswordEncoder passwordEncoder() {

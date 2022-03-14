@@ -30,6 +30,16 @@
                 <p>Invalid username or password.</p>
             </div>
 
+            <div class="alert alert-dismissible alert-danger mt-2 mb-2" th:if="${message ne null}">
+                <button type="button" class="close" data-dismiss="alert">×</button>
+                <p th:text="${message}"></p>
+            </div>
+
+            <div class="alert alert-dismissible alert-success mt-2 mb-2" th:if="${registration_success ne null}">
+                <button type="button" class="close" data-dismiss="alert">×</button>
+                <p th:text="${registration_success}"></p>
+            </div>
+
             <form method="post" th:action="@{/login}">
                 <div class="row py-3">
                     <div class="col-sm-12 col-md-6 col-lg-6 mb-4">

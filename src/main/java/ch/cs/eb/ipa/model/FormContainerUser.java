@@ -1,5 +1,7 @@
 package ch.cs.eb.ipa.model;
 
+import ch.cs.eb.ipa.entity.CUser;
+
 // SERVES AS A DATA INPUT CONTAINER FOR THE REGISTER TEMPLATE; DATA IS STORED AS STRING
 public class FormContainerUser {
     private String cts_id;
@@ -58,6 +60,16 @@ public class FormContainerUser {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public CUser generateCUser() {
+        CUser user = new CUser();
+        user.setCts_id(Integer.parseInt(getCts_id()));
+        user.setEmail(getEmail());
+        user.setLastname(getLastname());
+        user.setPrename(getPrename());
+        user.setPassword(getPassword());
+        return user;
     }
 
     @Override
