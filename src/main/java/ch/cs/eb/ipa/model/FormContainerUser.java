@@ -9,6 +9,7 @@ public class FormContainerUser {
     private String lastname;
     private String password;
     private String repeat_password;
+    private String new_password;
     private String email;
 
     public FormContainerUser() {
@@ -54,6 +55,14 @@ public class FormContainerUser {
         this.repeat_password = repeat_password;
     }
 
+    public String getNew_password() {
+        return new_password;
+    }
+
+    public void setNew_password(String new_password) {
+        this.new_password = new_password;
+    }
+
     public String getEmail() {
         return email;
     }
@@ -80,6 +89,7 @@ public class FormContainerUser {
                 ", lastname='" + lastname + '\'' +
                 ", password='" + password + '\'' +
                 ", repeat_password='" + repeat_password + '\'' +
+                ", new_password='" + new_password + '\'' +
                 ", email='" + email + '\'' +
                 '}';
     }
