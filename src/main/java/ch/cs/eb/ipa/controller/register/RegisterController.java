@@ -6,6 +6,9 @@ import ch.cs.eb.ipa.model.UserAuthority;
 import ch.cs.eb.ipa.repository.CUserRepository;
 import ch.cs.eb.ipa.repository.UAuthorityRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.AnonymousAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -23,8 +26,12 @@ public class RegisterController {
 
     @RequestMapping("/register")
     public String register(Model model) {
-        model.addAttribute("user", new FormContainerUser());
-        return "register";
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if (authentication == null || authentication instanceof AnonymousAuthenticationToken) {
+            model.addAttribute("user", new FormContainerUser());
+            return "register";
+        }
+        return "redirect:/home";
     }
 
     @PostMapping("/register")
