@@ -96,7 +96,7 @@
                 </div>
             </form>
 
-            <table class="table table-hover mt-4" th:if="${searchResults ne null}">
+            <table class="table table-hover mt-4" th:if="${searchResults!=null and !searchResults.empty}">
                 <thead class="thead-light">
                 <tr>
                     <th scope="col"> CTS-ID </th>

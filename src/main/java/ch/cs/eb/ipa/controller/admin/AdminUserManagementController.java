@@ -9,14 +9,10 @@ import ch.cs.eb.ipa.util.UsernameFetcher;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Controller
 public class AdminUserManagementController {
@@ -49,7 +45,6 @@ public class AdminUserManagementController {
 
         if (inactiveUsers.isEmpty()) {
             model.addAttribute("message", "There are no inactive users.");
-            return "user_management";
         }
 
         return "user_management";
@@ -93,6 +88,59 @@ public class AdminUserManagementController {
             model.addAttribute("message", "There are no inactive users.");
             return "user_management";
         }
+
+        return "user_management";
+    }
+
+    @PostMapping("/search_user_admin")
+    public String searchUserAdmin(Model model, @ModelAttribute("criteria") SearchCriteriaContainer criteria) {
+        UsernameFetcher usernameFetcher = new UsernameFetcher();
+
+        List<CUser> userList = userRepository.fetchAllUsers();
+        List<CUser> inactiveUsers = new ArrayList<>();
+        List<CUser> searchResults = new ArrayList<>();
+
+        String searchTerm = criteria.getSearchTerm().toLowerCase();
+
+        if (userRepository.getByCtsId(Integer.parseInt(usernameFetcher.getUsername())).getUser_authority().getRole().equals(UserAuthority.ADMIN)) {
+            model.addAttribute("admin", "no relevance");
+        }
+        model.addAttribute("self", userRepository.getByCtsId(Integer.parseInt(usernameFetcher.getUsername())));
+        model.addAttribute("criteria", new SearchCriteriaContainer());
+
+        for (CUser c : userList) {
+            if (c.getUser_authority().getRole().equals(UserAuthority.INACTIVE)) {
+                inactiveUsers.add(c);
+            }
+        }
+
+        model.addAttribute("users", inactiveUsers);
+
+        if (inactiveUsers.isEmpty()) {
+            model.addAttribute("message", "There are no inactive users.");
+        }
+
+        if (userList == null || userList.isEmpty()) {
+            return "redirect:/user_management";
+        }
+
+        if (searchTerm.trim().equals("")) {
+            return "redirect:/user_management";
+        }
+
+        for (CUser c : userList) {
+            if (c.getCts_id() != userRepository.getByCtsId(Integer.parseInt(usernameFetcher.getUsername())).getCts_id()) {
+                if (String.valueOf(c.getCts_id()).toLowerCase().contains(searchTerm) || String.valueOf(c.getEmail()).toLowerCase().contains(searchTerm) || String.valueOf(c.getLastname()).toLowerCase().contains(searchTerm) || String.valueOf(c.getPrename()).toLowerCase().contains(searchTerm)) {
+                    searchResults.add(c);
+                }
+            }
+        }
+
+        if (searchResults.isEmpty()) {
+            model.addAttribute("result", "Your search returned no results. Please reconsider your input");
+        }
+
+        model.addAttribute("searchResults", searchResults);
 
         return "user_management";
     }
