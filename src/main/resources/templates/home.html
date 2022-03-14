@@ -133,7 +133,7 @@
                     <td scope="row"><span th:text="${c.cts_id}"> CTS-ID </span></td>
                     <td><span th:text="${c.prename}"> First Name </span></td>
                     <td><span th:text="${c.lastname}"> Last Name </span></td>
-                    <td><a th:href="@{'/view_profile/' + ${c.cts_id}}">View</a></td>
+                    <td><a th:href="@{'/view_profile/' + ${c.cts_id}}" class="btn btn-outline-primary btn-sm">View</a></td>
                 </tr>
                 </tbody>
             </table>
