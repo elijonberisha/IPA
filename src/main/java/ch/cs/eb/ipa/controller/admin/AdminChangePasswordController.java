@@ -35,6 +35,7 @@ public class AdminChangePasswordController {
         model.addAttribute("user", user);
         model.addAttribute("self", currentUser);
         model.addAttribute("inactiveUser", userRepository.getByCtsId(id));
+
         return "change_password_admin";
     }
 
@@ -66,6 +67,7 @@ public class AdminChangePasswordController {
         userRepository.updateUser(end_user, end_user.getId());
 
         model.addAttribute("message_success", "Password of User " + end_user.getCts_id() + " has been successfully changed!");
+
         return "change_password_admin";
     }
 }

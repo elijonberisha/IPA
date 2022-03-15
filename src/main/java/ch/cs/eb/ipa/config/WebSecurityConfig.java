@@ -47,9 +47,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/change_password_admin").hasAnyAuthority(ADMIN)
                 .antMatchers("/user_management").hasAnyAuthority(ADMIN)
                 .antMatchers("/actuator").hasAnyAuthority(ADMIN)
+                .antMatchers("/search_user_admin/**").hasAnyAuthority(ADMIN)
+                .antMatchers("/activate_profile/**").hasAnyAuthority(ADMIN)
                 .antMatchers("/home").hasAnyAuthority(ADMIN, EMPLOYEE)
                 .antMatchers("/view_profile").hasAnyAuthority(ADMIN, EMPLOYEE)
+                .antMatchers("/view_profile/**").hasAnyAuthority(ADMIN, EMPLOYEE)
                 .antMatchers("/edit_profile").hasAnyAuthority(ADMIN, EMPLOYEE)
+                .antMatchers("/search_user").hasAnyAuthority(ADMIN, EMPLOYEE)
                 .antMatchers("/change_password").hasAnyAuthority(ADMIN, EMPLOYEE)
                 .antMatchers("/logout").hasAnyAuthority(ADMIN, EMPLOYEE, INACTIVE)
                 .anyRequest().authenticated()
@@ -59,6 +63,5 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and().exceptionHandling().accessDeniedPage("/403");
 
         http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.NEVER);
-        http.sessionManagement().maximumSessions(1).expiredUrl("/expired").and().invalidSessionUrl("/expired");
     }
 }

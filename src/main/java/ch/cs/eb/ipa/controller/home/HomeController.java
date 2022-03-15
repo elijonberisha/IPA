@@ -25,7 +25,6 @@ public class HomeController {
 
     @RequestMapping("/home")
     public String landingPage(Model model) {
-        userRepository.clearCache();
         UsernameFetcher usernameFetcher = new UsernameFetcher();
 
         List<CUser> userList = userRepository.fetchAllUsers();
@@ -93,6 +92,7 @@ public class HomeController {
         }
 
         model.addAttribute("searchResults", searchResults);
+
         return "home";
     }
 }

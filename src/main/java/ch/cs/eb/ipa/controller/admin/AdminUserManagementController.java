@@ -58,7 +58,6 @@ public class AdminUserManagementController {
 
         UsernameFetcher usernameFetcher = new UsernameFetcher();
 
-        List<CUser> userList = userRepository.fetchAllUsers();
         List<CUser> inactiveUsers = new ArrayList<>();
 
         if (userRepository.getByCtsId(Integer.parseInt(usernameFetcher.getUsername())).getUser_authority().getRole().equals(UserAuthority.ADMIN)) {
@@ -76,6 +75,7 @@ public class AdminUserManagementController {
             model.addAttribute("activation", "User is already activated.");
         }
 
+        List<CUser> userList = userRepository.fetchAllUsers();
         for (CUser c : userList) {
             if (c.getUser_authority().getRole().equals(UserAuthority.INACTIVE)) {
                 inactiveUsers.add(c);

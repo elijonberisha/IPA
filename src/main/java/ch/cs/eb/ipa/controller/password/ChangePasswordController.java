@@ -20,7 +20,6 @@ public class ChangePasswordController {
 
     @RequestMapping("/change_password")
     public String changePassword(Model model) {
-        userRepository.clearCache();
         UsernameFetcher usernameFetcher = new UsernameFetcher();
 
         if (userRepository.getByCtsId(Integer.parseInt(usernameFetcher.getUsername())).getUser_authority().getRole().equals(UserAuthority.ADMIN)) {
@@ -35,7 +34,6 @@ public class ChangePasswordController {
 
     @PostMapping("/change_password")
     public String changePassword(Model model, @ModelAttribute("user") FormContainerUser user) {
-        userRepository.clearCache();
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
         String username = new UsernameFetcher().getUsername();
         CUser currentUser = userRepository.getByCtsId(Integer.parseInt(username));
