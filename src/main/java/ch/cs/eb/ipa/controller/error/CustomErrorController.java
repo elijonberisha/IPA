@@ -26,7 +26,7 @@ public class CustomErrorController implements ErrorController {
             Integer statusCode = Integer.valueOf(status.toString());
 
             if (statusCode == HttpStatus.NOT_FOUND.value()) {
-                return "redirect:/404";
+                return "redirect:/home";
             } else if (statusCode == HttpStatus.INTERNAL_SERVER_ERROR.value()) {
                 return "redirect:/500";
             } else if (statusCode == HttpStatus.UNAUTHORIZED.value()) {

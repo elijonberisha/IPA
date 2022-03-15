@@ -38,6 +38,7 @@ public class UAuthorityRepository {
         List<UAuthority> authorities = null;
 
         try {
+            clearCache();
             emanager.getTransaction().begin();
             authorities = emanager.createNamedQuery("UAuthority.findAll").getResultList();
             emanager.getTransaction().commit();
@@ -50,6 +51,7 @@ public class UAuthorityRepository {
 
     public void createAuthority(UAuthority authority) {
         try {
+            clearCache();
             emanager.getTransaction().begin();
             emanager.persist(authority);
             emanager.getTransaction().commit();
@@ -62,6 +64,7 @@ public class UAuthorityRepository {
     public UAuthority readAuthority(int id) {
         UAuthority fetchedAuthority = null;
         try {
+            clearCache();
             emanager.getTransaction().begin();
             fetchedAuthority = emanager.find(UAuthority.class, id);
             emanager.getTransaction().commit();
@@ -74,6 +77,7 @@ public class UAuthorityRepository {
 
     public void updateAuthority(UAuthority authority, int id) {
         try {
+            clearCache();
             emanager.getTransaction().begin();
             UAuthority fetchedAuthority = emanager.find(UAuthority.class, id);
             if (fetchedAuthority != null) {
@@ -88,6 +92,7 @@ public class UAuthorityRepository {
 
     public void deleteAuthority(int id) {
         try {
+            clearCache();
             emanager.getTransaction().begin();
             UAuthority fetchedAuthority = emanager.find(UAuthority.class, id);
             if (fetchedAuthority != null) {
@@ -104,6 +109,7 @@ public class UAuthorityRepository {
         List<UAuthority> authorities = null;
 
         try {
+            clearCache();
             emanager.getTransaction().begin();
             authorities = emanager.createQuery("SELECT u FROM UAuthority u WHERE u.role LIKE :role").setParameter("role", authority).setMaxResults(1).getResultList();
             emanager.getTransaction().commit();

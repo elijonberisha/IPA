@@ -92,6 +92,7 @@ public class HomeController {
         }
 
         model.addAttribute("searchResults", searchResults);
+
         return "home";
     }
 }
