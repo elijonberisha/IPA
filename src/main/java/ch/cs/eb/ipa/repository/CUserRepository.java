@@ -147,6 +147,7 @@ public class CUserRepository implements UserDetailsService {
         return userList.get(0);
     }
 
+
     public void clearCache() {
         emanager.clear();
     }
