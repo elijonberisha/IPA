@@ -134,7 +134,7 @@
                     <input th:value="${youtube}" disabled type="text" class="form-control" placeholder="Link">
                 </div>
             </div>
-            <hr>
+            <hr th:if="${w3schoolsList!= null and !w3schoolsList.empty}">
             <div class="row mt-4" th:if="${w3schoolsList!= null and !w3schoolsList.empty}">
                 <div class="col-lg-5 col-md-12 col-sm-12">
                     <p class="font-weight-bold">Favorite W3Schools Articles:</p>
@@ -148,7 +148,7 @@
                     <input th:value="${w}" disabled type="text" class="form-control" placeholder="Link">
                 </div>
             </div>
-            <hr>
+            <hr th:if="${udemyList!= null and !udemyList.empty}">
             <div class="row mt-4" th:if="${udemyList!= null and !udemyList.empty}">
                 <div class="col-lg-5 col-md-12 col-sm-12">
                     <p class="font-weight-bold">Favorite Udemy Trainings:</p>
@@ -162,7 +162,7 @@
                     <input th:value="${u}" disabled type="text" class="form-control" placeholder="Link">
                 </div>
             </div>
-            <hr>
+            <hr th:if="${tedList!= null and !tedList.empty}">
             <div class="row mt-4" th:if="${tedList!= null and !tedList.empty}">
                 <div class="col-lg-5 col-md-12 col-sm-12">
                     <p class="font-weight-bold">Favorite TED-Talks:</p>
@@ -176,7 +176,12 @@
                     <input th:value="${t}" disabled type="text" class="form-control" placeholder="Link">
                 </div>
             </div>
-
+            <hr>
+            <div class="row mt-4">
+                <div class="col text-right">
+                    <a href="home" class="btn btn-outline-danger mb-2">Back</a>
+                </div>
+            </div>
         </div>
         </div>
 
