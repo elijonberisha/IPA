@@ -26,24 +26,24 @@
                             Profile
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#">View Profile</a>
-                            <a class="dropdown-item" href="#">Edit Profile</a>
-                            <a class="dropdown-item" download="E_LEARNING_REC_MANUAL.pdf" href="#">Help</a>
+                            <a class="dropdown-item" th:href="@{'/view_profile/' + ${self.cts_id}}">View Profile</a>
+                            <a class="dropdown-item" href="edit_profile">Edit Profile</a>
+                            <a class="dropdown-item" download="E_LEARNING_REC_MANUAL.pdf" th:href="@{/download_manual}">Help</a>
                         </div>
                     </li>
 
-                    <li class="nav-item active dropdown">
+                    <li class="nav-item active dropdown" th:if="${admin ne null}">
                         <a class="nav-link dropdown-toggle" href="#" id="adminNavbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Admin
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#">User Management</a>
+                            <a class="dropdown-item" href="user_management">User Management</a>
                         </div>
                     </li>
 
                     <!--- CHANGE PASSWORD -->
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" href="change_password">
                             <i class="fas fa-asterisk" title="Change Password" data-toggle="tooltip" data-placement="bottom" data-original-title="Change Password"></i>
                         </a>
                     </li>
@@ -72,75 +72,77 @@
                 </div>
             </div>
 
-            <div class="alert alert-danger mt-2 mb-2">
-                <p>Error Message</p>
+            <div class="alert alert-danger alert-dismissible mt-4 mb-3" th:if="${message ne null}">
+                <button type="button" class="close" data-dismiss="alert">×</button>
+                <p th:text="${message}"></p>
             </div>
 
-            <div class="alert alert-success mt-2 mb-2">
-                <p>Your profile has been successfully edited!</p>
+            <div class="alert alert-success alert-dismissible mt-4 mb-3" th:if="${message_success ne null}">
+                <button type="button" class="close" data-dismiss="alert">×</button>
+                <p th:text="${message_success}"></p>
             </div>
 
-            <form method="post">
+            <form method="post" th:action="@{/edit_profile}">
                 <div class="row py-3">
-                    <div class="col-3">
+                    <div class="col-lg-3 col-md-3 col-sm-12">
                         <label for="cts_id">Cognizant-ID:</label>
                     </div>
-                    <div class="col-9">
-                        <input class="form-control" id="cts_id" placeholder="100000" type="text" disabled>
+                    <div class="col-lg-9 col-md-9 col-sm-12">
+                        <input class="form-control" id="cts_id" th:placeholder="${self.cts_id}" type="text" disabled>
                     </div>
                 </div>
 
                 <div class="row py-3">
-                    <div class="col-3">
+                    <div class="col-lg-3 col-md-3 col-sm-12">
                         <label for="firstname">First Name:</label>
                     </div>
-                    <div class="col-9">
-                        <input class="form-control" id="firstname" placeholder="First Name" type="text" disabled>
+                    <div class="col-lg-9 col-md-9 col-sm-12">
+                        <input class="form-control" id="firstname" th:placeholder="${self.prename}" type="text" disabled>
                     </div>
                 </div>
 
                 <div class="row py-3">
-                    <div class="col-3">
+                    <div class="col-lg-3 col-md-3 col-sm-12">
                         <label for="lastname">Last Name:</label>
                     </div>
-                    <div class="col-9">
-                        <input class="form-control" id="lastname" placeholder="Last Name" type="text" disabled>
+                    <div class="col-lg-9 col-md-9 col-sm-12">
+                        <input class="form-control" id="lastname" th:placeholder="${self.lastname}" type="text" disabled>
                     </div>
                 </div>
 
                 <div class="row py-3">
-                    <div class="col-3">
+                    <div class="col-lg-3 col-md-3 col-sm-12">
                         <label for="mail">Cognizant Mail:</label>
                     </div>
-                    <div class="col-9">
-                        <input class="form-control" id="mail" placeholder="cognizant.mail@cognizant.com" type="email" disabled>
+                    <div class="col-lg-9 col-md-9 col-sm-12">
+                        <input class="form-control" id="mail" th:placeholder="${self.email}" type="email" disabled>
                     </div>
                 </div>
 
                 <div class="row py-3">
-                    <div class="col-3">
+                    <div class="col-lg-3 col-md-3 col-sm-12">
                         <label for="degreed">Favorite Degreed Article:</label>
                     </div>
-                    <div class="col-9">
-                        <input class="form-control" id="degreed" placeholder="Degreed Link" type="text">
+                    <div class="col-lg-9 col-md-9 col-sm-12">
+                        <input class="form-control" th:field="*{degreed.articleLink}" id="degreed" placeholder="Degreed Link" type="text">
                     </div>
                 </div>
 
                 <div class="row py-3">
-                    <div class="col-3">
+                    <div class="col-lg-3 col-md-3 col-sm-12">
                         <label for="oreilly">Favorite 0'Reilly Book:</label>
                     </div>
-                    <div class="col-9">
-                        <input class="form-control" id="oreilly" placeholder="O'Reilly Link" type="text">
+                    <div class="col-lg-9 col-md-9 col-sm-12">
+                        <input class="form-control" th:field="*{oreilly.bookLink}" id="oreilly" placeholder="O'Reilly Link" type="text">
                     </div>
                 </div>
 
                 <div class="row py-3">
-                    <div class="col-3">
+                    <div class="col-lg-3 col-md-3 col-sm-12">
                         <label for="youtube">Most Useful YouTube Tutorial:</label>
                     </div>
-                    <div class="col-9">
-                        <input class="form-control" id="youtube" placeholder="YouTube Link" type="text">
+                    <div class="col-lg-9 col-md-9 col-sm-12">
+                        <input class="form-control" th:field="*{youtube.tutorialLink}" id="youtube" placeholder="YouTube Link" type="text">
                     </div>
                 </div>
 
@@ -149,13 +151,13 @@
                         <label>Favorite TED-Talks:</label>
                     </div>
                     <div class="col-lg-3 col-md-6 col-sm-12 mb-3">
-                        <input class="form-control" placeholder="TED Link" type="text">
+                        <input class="form-control" th:field="*{ted.talk1Link}" placeholder="TED Link" type="text">
                     </div>
                     <div class="col-lg-3 col-md-6 col-sm-12 mb-3">
-                        <input class="form-control" placeholder="TED Link" type="text">
+                        <input class="form-control" th:field="*{ted.talk2Link}" placeholder="TED Link" type="text">
                     </div>
                     <div class="col-lg-3 col-md-6 col-sm-12 mb-3">
-                        <input class="form-control" placeholder="TED Link" type="text">
+                        <input class="form-control" th:field="*{ted.talk3Link}" placeholder="TED Link" type="text">
                     </div>
                 </div>
 
@@ -164,13 +166,13 @@
                         <label>Favorite W3Schools Articles:</label>
                     </div>
                     <div class="col-lg-3 col-md-6 col-sm-12 mb-3">
-                        <input class="form-control" placeholder="W3Schools Link" type="text">
+                        <input class="form-control" th:field="*{w3schools.article1Link}" placeholder="W3Schools Link" type="text">
                     </div>
                     <div class="col-lg-3 col-md-6 col-sm-12 mb-3">
-                        <input class="form-control" placeholder="W3Schools Link" type="text">
+                        <input class="form-control" th:field="*{w3schools.article2Link}" placeholder="W3Schools Link" type="text">
                     </div>
                     <div class="col-lg-3 col-md-6 col-sm-12 mb-3">
-                        <input class="form-control" placeholder="W3Schools Link" type="text">
+                        <input class="form-control" th:field="*{w3schools.article3Link}" placeholder="W3Schools Link" type="text">
                     </div>
                 </div>
 
@@ -179,13 +181,13 @@
                         <label>Favorite Udemy Trainings:</label>
                     </div>
                     <div class="col-lg-3 col-md-6 col-sm-12 mb-3">
-                        <input class="form-control" placeholder="Udemy Link" type="text">
+                        <input class="form-control" th:field="*{udemy.training1Link}" placeholder="Udemy Link" type="text">
                     </div>
                     <div class="col-lg-3 col-md-6 col-sm-12 mb-3">
-                        <input class="form-control" placeholder="Udemy Link" type="text">
+                        <input class="form-control" th:field="*{udemy.training2Link}" placeholder="Udemy Link" type="text">
                     </div>
                     <div class="col-lg-3 col-md-6 col-sm-12 mb-3">
-                        <input class="form-control" placeholder="Udemy Link" type="text">
+                        <input class="form-control" th:field="*{udemy.training3Link}" placeholder="Udemy Link" type="text">
                     </div>
                 </div>
 

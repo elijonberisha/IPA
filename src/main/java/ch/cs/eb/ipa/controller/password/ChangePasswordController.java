@@ -35,6 +35,7 @@ public class ChangePasswordController {
 
     @PostMapping("/change_password")
     public String changePassword(Model model, @ModelAttribute("user") FormContainerUser user) {
+        userRepository.clearCache();
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
         String username = new UsernameFetcher().getUsername();
         CUser currentUser = userRepository.getByCtsId(Integer.parseInt(username));
@@ -65,8 +66,6 @@ public class ChangePasswordController {
         currentUser.setPassword(encoder.encode(user.getNew_password()));
         userRepository.updateUser(currentUser, currentUser.getId());
         model.addAttribute("message_success", "Your password has been successfully changed!");
-
-        userRepository.clearCache();
 
         return "change_password";
     }
