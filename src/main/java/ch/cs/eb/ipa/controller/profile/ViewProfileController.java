@@ -7,6 +7,7 @@ import ch.cs.eb.ipa.util.UsernameFetcher;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
@@ -38,6 +39,7 @@ public class ViewProfileController {
 
         model.addAttribute("self", currentUser);
         model.addAttribute("user", targetUser);
+        model.addAttribute("role", StringUtils.capitalize(targetUser.getUser_authority().getRole().name()));
 
         if (targetUser.getYoutube() != null) {
             if (targetUser.getYoutube().getTutorialLink() != null && !targetUser.getYoutube().getTutorialLink().trim().equals("")) {
