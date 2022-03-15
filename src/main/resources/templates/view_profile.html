@@ -26,24 +26,24 @@
                             Profile
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#">View Profile</a>
-                            <a class="dropdown-item" href="#">Edit Profile</a>
-                            <a class="dropdown-item" download="E_LEARNING_REC_MANUAL.pdf" href="#">Help</a>
+                            <a class="dropdown-item" th:href="@{'/view_profile/' + ${self.cts_id}}">View Profile</a>
+                            <a class="dropdown-item" href="edit_profile">Edit Profile</a>
+                            <a class="dropdown-item" download="E_LEARNING_REC_MANUAL.pdf" th:href="@{/download_manual}">Help</a>
                         </div>
                     </li>
 
-                    <li class="nav-item active dropdown">
+                    <li class="nav-item active dropdown" th:if="${admin ne null}">
                         <a class="nav-link dropdown-toggle" href="#" id="adminNavbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Admin
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#">User Management</a>
+                            <a class="dropdown-item" href="user_management">User Management</a>
                         </div>
                     </li>
 
                     <!--- CHANGE PASSWORD -->
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" href="change_password">
                             <i class="fas fa-asterisk" title="Change Password" data-toggle="tooltip" data-placement="bottom" data-original-title="Change Password"></i>
                         </a>
                     </li>
@@ -68,145 +68,112 @@
             </div>
             <div class="row my-3">
                 <div class="col">
-                    <h2>User: NR</h2>
+                    <h2>User: <span th:text="${user.cts_id}"> NR </span></h2>
                 </div>
             </div>
 
-            <div class="row mt-5 mb-3">
+            <div class="row mt-5 mb-4">
                 <div class="col-lg-5 col-md-5 col-sm-12">
                     <p class="font-weight-bold">Last Name:</p>
                 </div>
                 <div class="col-lg-7 col-md-7 col-sm-12">
-                    <input disabled type="text" class="form-control" placeholder="Last Name">
+                    <input th:value="${user.lastname}" disabled type="text" class="form-control" placeholder="Last Name">
                 </div>
             </div>
 
-            <div class="row mt-2 mb-3">
+            <div class="row mt-2 mb-4">
                 <div class="col-lg-5 col-md-5 col-sm-12">
                     <p class="font-weight-bold">First Name:</p>
                 </div>
                 <div class="col-lg-7 col-md-7 col-sm-12">
-                    <input disabled type="text" class="form-control" placeholder="First Name">
+                    <input th:value="${user.prename}" disabled type="text" class="form-control" placeholder="First Name">
                 </div>
             </div>
 
-            <div class="row mt-2 mb-3">
+            <div class="row mt-2 mb-4">
                 <div class="col-lg-5 col-md-5 col-sm-12">
                     <p class="font-weight-bold">Cognizant Mail:</p>
                 </div>
                 <div class="col-lg-7 col-md-7 col-sm-12">
-                    <input disabled type="text" class="form-control" placeholder="Mail">
+                    <input th:value="${user.email}" disabled type="text" class="form-control" placeholder="Mail">
                 </div>
             </div>
 
-            <div class="row mt-2 mb-3">
+            <div class="row mt-2 mb-4" th:if="${role ne null}">
                 <div class="col-lg-5 col-md-5 col-sm-12">
                     <p class="font-weight-bold">Role:</p>
                 </div>
                 <div class="col-lg-7 col-md-7 col-sm-12">
-                    <input disabled type="text" class="form-control" placeholder="Role">
+                    <input th:value="${role}" disabled type="text" class="form-control" placeholder="Role">
                 </div>
             </div>
 
-            <div class="row mt-2 mb-3">
+            <div class="row mt-2 mb-4" th:if="${degreed ne null}">
                 <div class="col-lg-5 col-md-5 col-sm-12">
                     <p class="font-weight-bold">Favorite Degreed Article:</p>
                 </div>
                 <div class="col-lg-7 col-md-7 col-sm-12">
-                    <input disabled type="text" class="form-control" placeholder="Link">
+                    <input th:value="${degreed}" disabled type="text" class="form-control" placeholder="Link">
                 </div>
             </div>
 
-            <div class="row mt-2 mb-3">
+            <div class="row mt-2 mb-4" th:if="${oreilly ne null}">
                 <div class="col-lg-5 col-md-5 col-sm-12">
                     <p class="font-weight-bold">Favorite O'Reilly Book:</p>
                 </div>
                 <div class="col-lg-7 col-md-7 col-sm-12">
-                    <input disabled type="text" class="form-control" placeholder="Link">
+                    <input th:value="${oreilly}" disabled type="text" class="form-control" placeholder="Link">
                 </div>
             </div>
 
-            <div class="row mt-2 mb-3">
+            <div class="row mt-2 mb-4" th:if="${youtube ne null}">
                 <div class="col-lg-5 col-md-5 col-sm-12">
                     <p class="font-weight-bold">Favorite YouTube Tutorial:</p>
                 </div>
                 <div class="col-lg-7 col-md-7 col-sm-12">
-                    <input disabled type="text" class="form-control" placeholder="Link">
+                    <input th:value="${youtube}" disabled type="text" class="form-control" placeholder="Link">
                 </div>
             </div>
-
-            <div class="row mt-4">
-                <div class="col-lg-5 col-md-12 col-sm-12 mb-2">
+            <hr>
+            <div class="row mt-4" th:if="${w3schoolsList!= null and !w3schoolsList.empty}">
+                <div class="col-lg-5 col-md-12 col-sm-12">
                     <p class="font-weight-bold">Favorite W3Schools Articles:</p>
                 </div>
-                <div class="col-lg-7 col-md-12 col-sm-12">
-                    <input disabled type="text" class="form-control" placeholder="Link">
-                </div>
             </div>
-            <div class="row mb-1 mt-2">
+            <div class="row mb-1 mt-2" th:if="${w3schoolsList!= null and !w3schoolsList.empty}" th:each="w : ${w3schoolsList}">
                 <div class="col-lg-5 col-md-12 col-sm-12 mb-2">
                     <p class="font-weight-bold"></p>
                 </div>
                 <div class="col-lg-7 col-md-12 col-sm-12">
-                    <input disabled type="text" class="form-control" placeholder="Link">
+                    <input th:value="${w}" disabled type="text" class="form-control" placeholder="Link">
                 </div>
             </div>
-            <div class="row mt-2 mb-1">
-                <div class="col-lg-5 col-md-12 col-sm-12 mb-2">
-                    <p class="font-weight-bold"></p>
-                </div>
-                <div class="col-lg-7 col-md-12 col-sm-12">
-                    <input disabled type="text" class="form-control" placeholder="Link">
-                </div>
-            </div>
-
-            <div class="row mt-4">
-                <div class="col-lg-5 col-md-12 col-sm-12 mb-2">
+            <hr>
+            <div class="row mt-4" th:if="${udemyList!= null and !udemyList.empty}">
+                <div class="col-lg-5 col-md-12 col-sm-12">
                     <p class="font-weight-bold">Favorite Udemy Trainings:</p>
                 </div>
-                <div class="col-lg-7 col-md-12 col-sm-12">
-                    <input disabled type="text" class="form-control" placeholder="Link">
-                </div>
             </div>
-            <div class="row mb-1 mt-2">
+            <div class="row mb-1 mt-2" th:if="${udemyList!= null and !udemyList.empty}" th:each="u : ${udemyList}">
                 <div class="col-lg-5 col-md-12 col-sm-12 mb-2">
                     <p class="font-weight-bold"></p>
                 </div>
                 <div class="col-lg-7 col-md-12 col-sm-12">
-                    <input disabled type="text" class="form-control" placeholder="Link">
+                    <input th:value="${u}" disabled type="text" class="form-control" placeholder="Link">
                 </div>
             </div>
-            <div class="row mt-2 mb-1">
-                <div class="col-lg-5 col-md-12 col-sm-12 mb-2">
-                    <p class="font-weight-bold"></p>
-                </div>
-                <div class="col-lg-7 col-md-12 col-sm-12">
-                    <input disabled type="text" class="form-control" placeholder="Link">
-                </div>
-            </div>
-
-            <div class="row mt-4">
-                <div class="col-lg-5 col-md-12 col-sm-12 mb-2">
+            <hr>
+            <div class="row mt-4" th:if="${tedList!= null and !tedList.empty}">
+                <div class="col-lg-5 col-md-12 col-sm-12">
                     <p class="font-weight-bold">Favorite TED-Talks:</p>
                 </div>
-                <div class="col-lg-7 col-md-12 col-sm-12">
-                    <input disabled type="text" class="form-control" placeholder="Link">
-                </div>
             </div>
-            <div class="row mb-1 mt-2">
+            <div class="row mb-1 mt-2" th:if="${tedList!= null and !tedList.empty}" th:each="t : ${tedList}">
                 <div class="col-lg-5 col-md-12 col-sm-12 mb-2">
                     <p class="font-weight-bold"></p>
                 </div>
                 <div class="col-lg-7 col-md-12 col-sm-12">
-                    <input disabled type="text" class="form-control" placeholder="Link">
-                </div>
-            </div>
-            <div class="row mt-2 mb-1">
-                <div class="col-lg-5 col-md-12 col-sm-12 mb-2">
-                    <p class="font-weight-bold"></p>
-                </div>
-                <div class="col-lg-7 col-md-12 col-sm-12">
-                    <input disabled type="text" class="form-control" placeholder="Link">
+                    <input th:value="${t}" disabled type="text" class="form-control" placeholder="Link">
                 </div>
             </div>
 
