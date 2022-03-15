@@ -14,6 +14,7 @@ public class IpaApplication {
 
 		authorityRepository.populateTable();
 		userRepository.createAdmin();
+		userRepository.clearCache();
 
 		SpringApplication.run(IpaApplication.class, args);
 	}
