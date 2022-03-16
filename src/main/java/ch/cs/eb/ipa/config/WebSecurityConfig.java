@@ -50,7 +50,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         auth.authenticationProvider(daoAuthenticationProvider());
     }
 
-    // MAPPINGS ARE SECURED HERE
+    // MAPPINGS ARE SECURED HERE PER antMatcher(mapping).hasAnyAuthority(authorities)
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
                 .antMatchers("/login").permitAll()
@@ -76,7 +76,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 // 403 MAPPING IS CONFIGURED HERE -> /403
                 .and().exceptionHandling().accessDeniedPage("/403");
 
-        // SPRING WILL USE PREVIOUS SESSION IF EXISTANT, SESSION LENGTH WILL BE 30M REGARDLESS OF USER ACTIVITY
+        // SPRING WILL USE PREVIOUS SESSION IF EXISTENT, SESSION LENGTH WILL BE 30M REGARDLESS OF USER ACTIVITY
         http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.NEVER);
     }
 }
