@@ -8,6 +8,7 @@ import org.springframework.security.core.GrantedAuthority;
  * class: UserGrantedAuthority.java
  */
 
+// CLASS IS USED TO SET THE AUTHORITY OF THE USER FOR THE APPLICATION USAGE
 public class UserGrantedAuthority implements GrantedAuthority {
     private String authority;
 
