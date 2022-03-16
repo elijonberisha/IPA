@@ -12,6 +12,12 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+/**
+ * author: Elijon Berisha
+ * date: 15.03.2022
+ * class: EditProfileController.java
+ */
+
 @Controller
 public class EditProfileController {
     @Autowired

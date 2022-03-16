@@ -11,6 +11,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+/**
+ * author: Elijon Berisha
+ * date: 14.03.2022
+ * class: AdminChangePasswordController.java
+ */
+
 @Controller
 public class AdminChangePasswordController {
     @Autowired

@@ -2,6 +2,12 @@ package ch.cs.eb.ipa.entity;
 
 import javax.persistence.*;
 
+/**
+ * author: Elijon Berisha
+ * date: 10.03.2022
+ * class: Udemy.java
+ */
+
 @Entity
 @NamedQuery(name = "Udemy.findAll", query = "SELECT u FROM Udemy u")
 @Table(name = "udemy")

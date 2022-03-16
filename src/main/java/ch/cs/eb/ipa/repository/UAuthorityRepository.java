@@ -10,6 +10,12 @@ import javax.persistence.Persistence;
 import javax.transaction.Transactional;
 import java.util.List;
 
+/**
+ * author: Elijon Berisha
+ * date: 10.03.2022
+ * class: UAuthorityRepository.java
+ */
+
 @Service
 @Transactional
 public class UAuthorityRepository {

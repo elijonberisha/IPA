@@ -2,6 +2,12 @@ package ch.cs.eb.ipa.entity;
 
 import javax.persistence.*;
 
+/**
+ * author: Elijon Berisha
+ * date: 10.03.2022
+ * class: YouTube.java
+ */
+
 @Entity
 @NamedQuery(name = "Youtube.findAll", query = "SELECT y FROM Youtube y")
 @Table(name = "youtube")

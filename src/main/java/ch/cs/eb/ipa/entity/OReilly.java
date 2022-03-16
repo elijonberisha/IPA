@@ -2,6 +2,12 @@ package ch.cs.eb.ipa.entity;
 
 import javax.persistence.*;
 
+/**
+ * author: Elijon Berisha
+ * date: 10.03.2022
+ * class: OReilly.java
+ */
+
 @Entity
 @NamedQuery(name = "OReilly.findAll", query = "SELECT o FROM OReilly o")
 @Table(name = "oreilly")

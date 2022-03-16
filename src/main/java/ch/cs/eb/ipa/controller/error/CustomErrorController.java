@@ -13,6 +13,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletRequest;
 
+/**
+ * author: Elijon Berisha
+ * date: 15.03.2022
+ * class: CustomErrorController.java
+ */
+
 @Controller
 public class CustomErrorController implements ErrorController {
     @Autowired

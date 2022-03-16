@@ -4,6 +4,12 @@ import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 
+/**
+ * author: Elijon Berisha
+ * date: 15.03.2022
+ * class: UrlChecker.java
+ */
+
 public class UrlChecker {
     public boolean isUrl(String url) {
         try {

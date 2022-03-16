@@ -2,6 +2,12 @@ package ch.cs.eb.ipa.entity;
 
 import javax.persistence.*;
 
+/**
+ * author: Elijon Berisha
+ * date: 10.03.2022
+ * class: W3schools.java
+ */
+
 @Entity
 @NamedQuery(name = "W3schools.findAll", query = "SELECT w FROM W3schools w")
 @Table(name = "w3schools")

@@ -16,6 +16,12 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+/**
+ * author: Elijon Berisha
+ * date: 14.03.2022
+ * class: RegisterController.java
+ */
+
 @Controller
 public class RegisterController {
     @Autowired

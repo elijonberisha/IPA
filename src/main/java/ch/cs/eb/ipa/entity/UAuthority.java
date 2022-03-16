@@ -5,6 +5,12 @@ import ch.cs.eb.ipa.model.UserAuthority;
 import javax.persistence.*;
 import java.util.List;
 
+/**
+ * author: Elijon Berisha
+ * date: 10.03.2022
+ * class: UAuthority.java
+ */
+
 @Entity
 @NamedQuery(name = "UAuthority.findAll", query = "SELECT u FROM UAuthority u")
 @Table(name = "authority")

@@ -7,6 +7,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.nio.file.Paths;
 
+/**
+ * author: Elijon Berisha
+ * date: 16.03.2022
+ * class: UserManualController.java
+ */
+
 @Controller
 public class UserManualController {
 

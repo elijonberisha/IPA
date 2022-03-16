@@ -9,6 +9,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpSession;
 
+/**
+ * author: Elijon Berisha
+ * date: 14.03.2022
+ * class: LoginController.java
+ */
+
 @Controller
 public class LoginController {
 

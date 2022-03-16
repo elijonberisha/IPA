@@ -2,6 +2,12 @@ package ch.cs.eb.ipa.model;
 
 import ch.cs.eb.ipa.entity.CUser;
 
+/**
+ * author: Elijon Berisha
+ * date: 14.03.2022
+ * class: FormContainerUser.java
+ */
+
 // SERVES AS A DATA INPUT CONTAINER FOR THE REGISTER TEMPLATE; DATA IS STORED AS STRING
 public class FormContainerUser {
     private String cts_id;

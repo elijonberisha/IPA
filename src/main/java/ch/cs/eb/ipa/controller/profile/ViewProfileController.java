@@ -14,6 +14,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * author: Elijon Berisha
+ * date: 15.03.2022
+ * class: ViewProfileController.java
+ */
+
 @Controller
 public class ViewProfileController {
     @Autowired

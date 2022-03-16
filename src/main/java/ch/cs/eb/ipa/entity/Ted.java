@@ -2,6 +2,12 @@ package ch.cs.eb.ipa.entity;
 
 import javax.persistence.*;
 
+/**
+ * author: Elijon Berisha
+ * date: 10.03.2022
+ * class: Ted.java
+ */
+
 @Entity
 @NamedQuery(name = "Ted.findAll", query = "SELECT t FROM Ted t")
 @Table(name = "ted")

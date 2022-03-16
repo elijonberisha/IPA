@@ -2,6 +2,12 @@ package ch.cs.eb.ipa.config;
 
 import org.springframework.security.core.GrantedAuthority;
 
+/**
+ * author: Elijon Berisha
+ * date: 14.03.2022
+ * class: UserGrantedAuthority.java
+ */
+
 public class UserGrantedAuthority implements GrantedAuthority {
     private String authority;
 

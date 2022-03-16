@@ -18,6 +18,12 @@ import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * author: Elijon Berisha
+ * date: 14.03.2022
+ * class: HomeController.java
+ */
+
 @Controller
 public class HomeController {
     @Autowired
