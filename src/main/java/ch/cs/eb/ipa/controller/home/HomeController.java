@@ -88,7 +88,7 @@ public class HomeController {
         }
 
         if (searchResults.isEmpty()) {
-            model.addAttribute("result", "Your search returned no results. Please reconsider your input");
+            model.addAttribute("result", "Your search returned no results. Please reconsider your search criteria.");
         }
 
         model.addAttribute("searchResults", searchResults);
