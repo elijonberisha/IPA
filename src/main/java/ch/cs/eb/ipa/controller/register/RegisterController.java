@@ -40,22 +40,22 @@ public class RegisterController {
         model.addAttribute("user", new FormContainerUser());
 
         if (!user.getCts_id().trim().matches("^[0-9]{6}$")) {
-            model.addAttribute("message", "Please enter a valid CTS-ID.");
+            model.addAttribute("message", "Please enter a valid CTS-ID. The CTS-ID is your unique 6 digit employee ID.");
             return "register";
         }
 
         if (!user.getPrename().trim().matches("[a-zA-Z]{2,255}$")) {
-            model.addAttribute("message", "First name must be 2 to 255 characters long. Only Latin characters are accepted.");
+            model.addAttribute("message", "Only Latin characters are accepted. Minimum of 2 characters required.");
             return "register";
         }
 
         if (!user.getLastname().trim().matches("[a-zA-Z]{2,255}$")) {
-            model.addAttribute("message", "Last name must be 2 to 255 characters long. Only Latin characters are accepted.");
+            model.addAttribute("message", "Only Latin characters are accepted. Minimum of 2 characters required.");
             return "register";
         }
 
-        if (!user.getEmail().trim().toLowerCase().matches("^[A-Za-z]{1,}\\.[A-Za-z]{1,}@cognizant\\.com$") || user.getEmail().trim().length() < 15 || user.getEmail().trim().length() > 255) {
-            model.addAttribute("message", "Following format is accepted: <name>.<name>@cognizant.com. Length must be between 15 and 255 characters long.");
+        if (!user.getEmail().trim().toLowerCase().matches("^[A-Za-z]{1,}\\.[A-Za-z]{1,}@cognizant\\.com$") || user.getEmail().trim().length() < 17 || user.getEmail().trim().length() > 255) {
+            model.addAttribute("message", "Following format is accepted: <name>.<name>@cognizant.com. Minimum of 17 characters required.");
             return "register";
         }
 

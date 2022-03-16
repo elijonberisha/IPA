@@ -1,7 +1,5 @@
 package ch.cs.eb.ipa.controller.login;
 
-import ch.cs.eb.ipa.repository.CUserRepository;
-import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
