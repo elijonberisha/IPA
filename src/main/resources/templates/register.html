@@ -33,14 +33,15 @@
             <form method="post" th:action="@{/register}" th:object="${user}">
                 <div class="row py-3">
                     <div class="col-sm-12 col-md-12 col-lg-12 mb-4">
-                        <label>Cognizant ID<span style="color:red;">*</span></label>
+                        <label class="font-weight-bold">Cognizant ID<span style="color:red;"> *</span></label>
                         <input class="form-control" type="text" th:field="*{cts_id}" required="" value="" minlength="6" maxlength="6" placeholder="Enter CTS-ID"/>
+                        <small class="form-text text-muted">Your 6 digit ID</small>
                     </div>
                 </div>
 
                 <div class="row py-3">
                     <div class="col-sm-12 col-md-6 col-lg-6 mb-4">
-                        <label>First Name<span style="color:red;"> *</span></label>
+                        <label class="font-weight-bold">First Name<span style="color:red;"> *</span></label>
                         <input class="form-control" type="text" th:field="*{prename}" placeholder="Enter First Name" required value=""/>
                         <small id="firstnameHelp" class="form-text text-muted">
                             Notice: Only Latin characters are valid
@@ -48,7 +49,7 @@
                     </div>
 
                     <div class="col-sm-12 col-md-6 col-lg-6">
-                        <label>Last Name<span style="color:red;"> *</span></label>
+                        <label class="font-weight-bold">Last Name<span style="color:red;"> *</span></label>
                         <input class="form-control" type="text" th:field="*{lastname}" placeholder="Enter Last Name" required value=""/>
                         <small id="lastnameHelp" class="form-text text-muted">
                             Notice: Only Latin characters are valid
@@ -58,19 +59,22 @@
 
                 <div class="row py-3">
                     <div class="col-sm-12 col-md-12 col-lg-12 mb-4">
-                        <label>Cognizant Mail<span style="color:red;"> *</span></label>
+                        <label class="font-weight-bold">Cognizant Mail<span style="color:red;"> *</span></label>
                         <input class="form-control" type="email" th:field="*{email}" required="" value="" placeholder="Enter CTS-Mail"/>
+                        <small class="form-text text-muted">Must match this format: [name].[name]@cognizant.com</small>
                     </div>
                 </div>
 
                 <div class="row py-3">
                     <div class="col-sm-12 col-md-12 col-lg-6 mb-4">
-                        <label>Password<span style="color:red;"> *</span></label>
+                        <label class="font-weight-bold">Password<span style="color:red;"> *</span></label>
                         <input class="form-control" type="password" th:field="*{password}" required="" value="" placeholder="Enter Password"/>
+                        <small class="form-text text-muted">Minimum 8 characters, 1 upper case and 1 lower case letter, 1 number and 1 special character</small>
                     </div>
                     <div class="col-sm-12 col-md-12 col-lg-6">
-                        <label>Repeat Password<span style="color:red;"> *</span></label>
+                        <label class="font-weight-bold">Repeat Password<span style="color:red;"> *</span></label>
                         <input class="form-control" type="password" th:field="*{repeat_password}" required="" value="" placeholder="Repeat Password"/>
+                        <small class="form-text text-muted">Must match with your chosen password</small>
                     </div>
                 </div>
 

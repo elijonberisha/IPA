@@ -81,8 +81,9 @@
             <form method="post" th:action="@{/search_user}" th:object="${criteria}">
                 <div class="row py-3">
                     <div class="col">
-                        <label>Search User</label>
+                        <label class="font-weight-bold">Search User</label>
                         <input th:field="*{searchTerm}" autofocus type="text" class="form-control" placeholder="Enter Search Term"/>
+                        <small id="searchHelp" class="form-text text-muted">Accepted Search Criteria: CTS-ID, First Name, Last Name and E-Mail</small>
                     </div>
                 </div>
                 <div class="row">
