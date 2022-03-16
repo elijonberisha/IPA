@@ -27,12 +27,12 @@ public class ViewProfileController {
         List<String> tedList = new ArrayList<>();
         List<String> w3schoolsList = new ArrayList<>();
 
-        if (currentUser.getUser_authority().getRole().equals(UserAuthority.ADMIN)) {
-            model.addAttribute("admin", "no relevance");
-        }
-
         if (userRepository.getByCtsId(id) == null) {
             return "redirect:/home";
+        }
+
+        if (currentUser.getUser_authority().getRole().equals(UserAuthority.ADMIN)) {
+            model.addAttribute("admin", "no relevance");
         }
 
         CUser targetUser = userRepository.getByCtsId(id);
