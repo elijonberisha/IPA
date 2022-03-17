@@ -48,6 +48,9 @@ public class EditProfileController {
 
         boolean inputExists = false;
 
+        // THYMELEAF ELEMENTS ARE GENERATED FOR TEMPLATE RENDERING
+        generateThymeleafElements(model, user);
+
         // CHECKS IF INPUT EXISTS; IF INPUT EXISTS AND IS VALID -> LINK IS UPDATED IN THE USER ENTITY
         if (degreed.getArticleLink() != null && !degreed.getArticleLink().trim().equals("") && degreed.getArticleLink().length() > 1) {
             inputExists = true;
@@ -216,8 +219,6 @@ public class EditProfileController {
             userRepository.updateUser(user, user.getId());
             model.addAttribute("message_success", "Your changes were successful!");
         }
-
-        // THYMELEAF ELEMENTS ARE GENERATED FOR TEMPLATE RENDERING
         generateThymeleafElements(model, user);
 
         return "edit_profile";
