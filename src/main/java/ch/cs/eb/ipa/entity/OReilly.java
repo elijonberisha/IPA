@@ -12,14 +12,17 @@ import javax.persistence.*;
 @NamedQuery(name = "OReilly.findAll", query = "SELECT o FROM OReilly o")
 @Table(name = "oreilly")
 public class OReilly {
+    // UNIQUE ID IS GENERATED FOR ENTITY
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID", unique = true)
     private int id;
 
+    // STORES THE OREILLY BOOK LINK IN THE "book_link" COLUMN
     @Column(name = "book_link")
     private String bookLink;
 
+    // CONTAINS USER THAT HAS BEEN ASSIGNED THIS ENTITY; ONLY ONE USER CAN BE ASSIGNED
     @OneToOne(mappedBy = "oreilly")
     private CUser user;
 

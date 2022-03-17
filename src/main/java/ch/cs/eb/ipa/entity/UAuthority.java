@@ -12,18 +12,22 @@ import java.util.List;
  */
 
 @Entity
+// JPQL QUERY DECLARATION FOR LATER USAGE IN CUserRepository
 @NamedQuery(name = "UAuthority.findAll", query = "SELECT u FROM UAuthority u")
 @Table(name = "authority")
 public class UAuthority {
+    // UNIQUE ID IS GENERATED FOR ENTITY
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID", unique = true)
     private int id;
 
+    // ENUM IS STORED AS STRING IN DB; ROLE IS STORED IN "role" COLUMN
     @Column(name = "role")
     @Enumerated(EnumType.STRING)
     private UserAuthority role;
 
+    // CONTAINS USERS THAT HAVE BEEN ASSIGNED THIS AUTHORITY; CAN BE LINKED TO MULTIPLE USERS
     @OneToMany(targetEntity = CUser.class, mappedBy = "user_authority", fetch = FetchType.EAGER)
     List<CUser> userAuthority;
 

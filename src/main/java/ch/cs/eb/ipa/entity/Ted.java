@@ -12,20 +12,25 @@ import javax.persistence.*;
 @NamedQuery(name = "Ted.findAll", query = "SELECT t FROM Ted t")
 @Table(name = "ted")
 public class Ted {
+    // UNIQUE ID IS GENERATED FOR ENTITY
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID", unique = true)
     private int id;
 
+    // STORES THE FIRST TED TALK LINK IN THE "talk1_link" COLUMN
     @Column(name = "talk1_link")
     private String talk1Link;
 
+    // STORES THE FIRST TED TALK LINK IN THE "talk2_link" COLUMN
     @Column(name = "talk2_link")
     private String talk2Link;
 
+    // STORES THE FIRST TED TALK LINK IN THE "talk3_link" COLUMN
     @Column(name = "talk3_link")
     private String talk3Link;
 
+    // CONTAINS USER THAT HAS BEEN ASSIGNED THIS ENTITY; ONLY ONE USER CAN BE ASSIGNED
     @OneToOne(mappedBy = "ted")
     private CUser user;
 
