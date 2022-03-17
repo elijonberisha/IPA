@@ -6,7 +6,9 @@ package ch.cs.eb.ipa.model;
  * class: SearchCriteriaContainer.java
  */
 
+// SERVES AS A DATA CONTAINER FOR THE SEARCH FUNCTIONS
 public class SearchCriteriaContainer {
+    // STORES SEARCH TERM
     private String searchTerm;
 
     public SearchCriteriaContainer() {

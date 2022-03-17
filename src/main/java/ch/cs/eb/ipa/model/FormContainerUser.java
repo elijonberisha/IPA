@@ -8,14 +8,21 @@ import ch.cs.eb.ipa.entity.CUser;
  * class: FormContainerUser.java
  */
 
-// SERVES AS A DATA INPUT CONTAINER FOR THE REGISTER TEMPLATE; DATA IS STORED AS STRING
+// SERVES AS A DATA INPUT CONTAINER FOR THE REGISTER TEMPLATE; DATA IS STORED AS STRING TO AVOID EXCEPTIONS
 public class FormContainerUser {
+    // 6 DIGIT CTS ID
     private String cts_id;
+    // FIRST NAME
     private String prename;
+    // LAST NAME
     private String lastname;
+    // PASSWORD (CURRENT)
     private String password;
+    // REPEATED PASSWORD (PASSWORD CONFIRMATION)
     private String repeat_password;
+    // NEW PASSWORD; IS ONLY USED IN THE CHANGE PASSWORD FUNCTIONALITY
     private String new_password;
+    // COGNIZANT MAIL
     private String email;
 
     public FormContainerUser() {
@@ -77,6 +84,7 @@ public class FormContainerUser {
         this.email = email;
     }
 
+    // GENERATES CUser INSTANCE WITH THE PROPERTIES OF THIS CLASS; ID IS IGNORED AS IT IS CREATED UPON DB ENTRY
     public CUser generateCUser() {
         CUser user = new CUser();
         user.setCts_id(Integer.parseInt(getCts_id()));
