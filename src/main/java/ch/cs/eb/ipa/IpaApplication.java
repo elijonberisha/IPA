@@ -5,6 +5,12 @@ import ch.cs.eb.ipa.repository.UAuthorityRepository;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+/**
+ * author: Elijon Berisha
+ * date: 10.03.2022
+ * class: IpaApplication.java
+ */
+
 @SpringBootApplication
 public class IpaApplication {
 

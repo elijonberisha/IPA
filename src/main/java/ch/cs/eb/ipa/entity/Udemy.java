@@ -2,24 +2,35 @@ package ch.cs.eb.ipa.entity;
 
 import javax.persistence.*;
 
+/**
+ * author: Elijon Berisha
+ * date: 10.03.2022
+ * class: Udemy.java
+ */
+
 @Entity
 @NamedQuery(name = "Udemy.findAll", query = "SELECT u FROM Udemy u")
 @Table(name = "udemy")
 public class Udemy {
+    // UNIQUE ID IS GENERATED FOR ENTITY
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID", unique = true)
     private int id;
 
+    // STORES THE FIRST UDEMY TRAINING LINK IN THE "training1_link" COLUMN
     @Column(name = "training1_link")
     private String training1Link;
 
+    // STORES THE SECOND UDEMY TRAINING LINK IN THE "training2_link" COLUMN
     @Column(name = "training2_link")
     private String training2Link;
 
+    // STORES THE THIRD UDEMY TRAINING LINK IN THE "training3_link" COLUMN
     @Column(name = "training3_link")
     private String training3Link;
 
+    // CONTAINS USER THAT HAS BEEN ASSIGNED THIS ENTITY; ONLY ONE USER CAN BE ASSIGNED
     @OneToOne(mappedBy = "udemy")
     private CUser user;
 

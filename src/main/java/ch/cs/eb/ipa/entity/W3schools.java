@@ -2,24 +2,35 @@ package ch.cs.eb.ipa.entity;
 
 import javax.persistence.*;
 
+/**
+ * author: Elijon Berisha
+ * date: 10.03.2022
+ * class: W3schools.java
+ */
+
 @Entity
 @NamedQuery(name = "W3schools.findAll", query = "SELECT w FROM W3schools w")
 @Table(name = "w3schools")
 public class W3schools {
+    // UNIQUE ID IS GENERATED FOR ENTITY
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID", unique = true)
     private int id;
 
+    // STORES THE FIRST W3SCHOOLS ARTICLE LINK IN THE "article1_link" COLUMN
     @Column(name = "article1_link")
     private String article1Link;
 
+    // STORES THE SECOND W3SCHOOLS ARTICLE LINK IN THE "article2_link" COLUMN
     @Column(name = "article2_link")
     private String article2Link;
 
+    // STORES THE THIRD W3SCHOOLS ARTICLE LINK IN THE "article3_link" COLUMN
     @Column(name = "article3_link")
     private String article3Link;
 
+    // CONTAINS USER THAT HAS BEEN ASSIGNED THIS ENTITY; ONLY ONE USER CAN BE ASSIGNED
     @OneToOne(mappedBy = "w3schools")
     private CUser user;
 

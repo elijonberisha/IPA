@@ -2,18 +2,27 @@ package ch.cs.eb.ipa.entity;
 
 import javax.persistence.*;
 
+/**
+ * author: Elijon Berisha
+ * date: 10.03.2022
+ * class: Degreed.java
+ */
+
 @Entity
 @NamedQuery(name = "Degreed.findAll", query = "SELECT d FROM Degreed d")
 @Table(name = "degreed")
 public class Degreed {
+    // UNIQUE ID IS GENERATED FOR ENTITY
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID", unique = true)
     private int id;
 
+    // STORES THE DEGREED ARTICLE LINK IN THE "article_link" COLUMN
     @Column(name = "article_link")
     private String articleLink;
 
+    // CONTAINS USER THAT HAS BEEN ASSIGNED THIS ENTITY; ONLY ONE USER CAN BE ASSIGNED
     @OneToOne(mappedBy = "degreed")
     private CUser user;
 
